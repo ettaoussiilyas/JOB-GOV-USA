@@ -2,6 +2,7 @@ import { Container } from "@/components/Container";
 import { Badge } from "@/components/Badge";
 import { Card } from "@/components/Card";
 import Link from "next/link";
+import { t } from "@/lib/i18n";
 
 export default function HomePage() {
   return (
@@ -14,18 +15,16 @@ export default function HomePage() {
         <Container>
           <div className="max-w-3xl">
             <div className="mb-4">
-              <Badge variant="accent">Phase 0 — Platform Foundation</Badge>
+              <Badge variant="accent">{t("home.hero.phaseBadge")}</Badge>
             </div>
             <h1
               id="hero-heading"
               className="text-4xl font-extrabold tracking-tight text-neutral-900 sm:text-5xl lg:text-6xl"
             >
-              Federal jobs, explained in plain English.
+              {t("home.hero.title")}
             </h1>
             <p className="mt-6 text-lg leading-relaxed text-neutral-600 sm:text-xl">
-              A clean, fast radar designed for students and newcomers navigating US federal hiring.
-              We cut through government acronyms to show who is eligible, what the job pays, and how
-              to apply.
+              {t("home.hero.subtitle")}
             </p>
 
             {/* Honest Status Notice */}
@@ -46,11 +45,9 @@ export default function HomePage() {
                   />
                 </svg>
                 <div>
-                  <p className="font-semibold text-sm">Under Construction</p>
+                  <p className="font-semibold text-sm">{t("home.hero.statusTitle")}</p>
                   <p className="mt-1 text-xs sm:text-sm text-amber-900 leading-relaxed">
-                    The platform core and staging database are currently active. Live job listings,
-                    ingestion from the official USAJOBS API, and email digest alerts will launch in
-                    upcoming phases.
+                    {t("home.hero.statusBody")}
                   </p>
                 </div>
               </div>
@@ -61,13 +58,13 @@ export default function HomePage() {
                 href="/about"
                 className="inline-flex items-center justify-center rounded-lg bg-teal-800 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
               >
-                Learn About Our Mission
+                {t("home.hero.ctaAbout")}
               </Link>
               <Link
                 href="/disclaimer"
                 className="inline-flex items-center justify-center rounded-lg border border-neutral-300 bg-white px-5 py-3 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500"
               >
-                Read Official Disclaimer
+                {t("home.hero.ctaDisclaimer")}
               </Link>
             </div>
           </div>
@@ -82,12 +79,9 @@ export default function HomePage() {
               id="how-it-works-heading"
               className="text-3xl font-bold tracking-tight text-neutral-900"
             >
-              How It Will Work
+              {t("home.howItWorks.heading")}
             </h2>
-            <p className="mt-3 text-neutral-600">
-              Federal hiring does not have to be intimidating. Here is how our radar will simplify
-              your search.
-            </p>
+            <p className="mt-3 text-neutral-600">{t("home.howItWorks.subtitle")}</p>
           </div>
 
           <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -96,11 +90,10 @@ export default function HomePage() {
                 1
               </div>
               <h3 className="mt-4 text-lg font-semibold text-neutral-900">
-                1. Spot New Postings Fast
+                {t("home.howItWorks.step1Title")}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                Daily synchronized radar tracking newly published positions across all federal
-                agencies, highlighting early deadlines before postings close.
+                {t("home.howItWorks.step1Desc")}
               </p>
             </Card>
 
@@ -109,11 +102,10 @@ export default function HomePage() {
                 2
               </div>
               <h3 className="mt-4 text-lg font-semibold text-neutral-900">
-                2. Understand Eligibility
+                {t("home.howItWorks.step2Title")}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                Deterministic plain-English explanations of hiring paths (Students, Recent Grads,
-                Public) paired with transparent pay scale ranges and locality factors.
+                {t("home.howItWorks.step2Desc")}
               </p>
             </Card>
 
@@ -122,11 +114,10 @@ export default function HomePage() {
                 3
               </div>
               <h3 className="mt-4 text-lg font-semibold text-neutral-900">
-                3. Get Targeted Alerts
+                {t("home.howItWorks.step3Title")}
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-neutral-600">
-                Set up saved searches tailored to your grade level, series code, and location.
-                Receive clean email digests without spam or passwords.
+                {t("home.howItWorks.step3Desc")}
               </p>
             </Card>
           </div>
@@ -144,43 +135,41 @@ export default function HomePage() {
               id="features-heading"
               className="text-3xl font-bold tracking-tight text-neutral-900"
             >
-              What You Will Get
+              {t("home.features.heading")}
             </h2>
-            <p className="mt-3 text-neutral-600">
-              Built on official public data from USAJOBS, enhanced with original context and
-              guidance.
-            </p>
+            <p className="mt-3 text-neutral-600">{t("home.features.subtitle")}</p>
           </div>
 
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <div className="rounded-lg border border-neutral-200 p-5">
-              <h3 className="font-semibold text-neutral-900">Fresh Jobs & Alerts</h3>
+              <h3 className="font-semibold text-neutral-900">
+                {t("home.features.freshJobsTitle")}
+              </h3>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">
-                Synchronized every day via official APIs with clear countdowns for closing
-                deadlines.
+                {t("home.features.freshJobsDesc")}
               </p>
             </div>
 
             <div className="rounded-lg border border-neutral-200 p-5">
-              <h3 className="font-semibold text-neutral-900">Plain-English Eligibility</h3>
+              <h3 className="font-semibold text-neutral-900">
+                {t("home.features.eligibilityTitle")}
+              </h3>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">
-                Instant answers to "Can I apply?" derived from structured data and official
-                criteria.
+                {t("home.features.eligibilityDesc")}
               </p>
             </div>
 
             <div className="rounded-lg border border-neutral-200 p-5">
-              <h3 className="font-semibold text-neutral-900">Step-by-Step Guides</h3>
+              <h3 className="font-semibold text-neutral-900">{t("home.features.guidesTitle")}</h3>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">
-                Sourced guides on building federal resumes, understanding GS pay, and Pathways
-                programs.
+                {t("home.features.guidesDesc")}
               </p>
             </div>
 
             <div className="rounded-lg border border-neutral-200 p-5">
-              <h3 className="font-semibold text-neutral-900">Transparent Salary Context</h3>
+              <h3 className="font-semibold text-neutral-900">{t("home.features.salaryTitle")}</h3>
               <p className="mt-2 text-xs leading-relaxed text-neutral-600">
-                Clear pay scales, grade bands, and locality adjustments without guesswork.
+                {t("home.features.salaryDesc")}
               </p>
             </div>
           </div>

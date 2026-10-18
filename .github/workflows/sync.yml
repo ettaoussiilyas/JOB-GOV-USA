@@ -1,0 +1,54 @@
+name: Ingestion Sync Radar
+
+on:
+  schedule:
+    # Run every 6 hours (00:00, 06:00, 12:00, 18:00 UTC)
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      reason:
+        description: "Reason for manual sync trigger"
+        required: false
+        default: "Manual sync execution"
+
+concurrency:
+  group: ingestion-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-jobs:
+    name: Trigger Job Ingestion Pipeline
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger /api/cron/sync
+        id: trigger-sync
+        run: |
+          TARGET_URL="${{ secrets.SITE_URL || 'https://fedjobsradar.com' }}/api/cron/sync"
+          echo "Triggering sync at $TARGET_URL..."
+
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$TARGET_URL" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            -H "Content-Type: application/json")
+
+          HTTP_STATUS=$(echo "$RESPONSE" | tail -n1)
+          BODY=$(echo "$RESPONSE" | sed '$d')
+
+          echo "HTTP Status: $HTTP_STATUS"
+          echo "Response Body: $BODY"
+
+          if [ "$HTTP_STATUS" -ne 200 ]; then
+            echo "::error::Sync endpoint returned error status $HTTP_STATUS"
+            exit 1
+          fi
+
+      - name: Create issue on sync failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            await github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🚨 Automated Job Sync Failed',
+              body: `The automated job ingestion run failed on ${new Date().toISOString()}.\n\nWorkflow run: ${context.serverUrl}/${context.repo.owner}/${context.repo.repo}/actions/runs/${context.runId}\n\nPlease inspect the logs and verify API rate limits / secrets.`
+            });

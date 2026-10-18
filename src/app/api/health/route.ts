@@ -9,7 +9,7 @@ interface HealthResponse {
   status: "ok" | "error";
   time: string;
   db: "ok" | "error";
-  lastSync: null;
+  lastSync: string | null;
 }
 
 export async function checkDatabaseHealth(timeoutMs = 3000): Promise<boolean> {
@@ -19,7 +19,6 @@ export async function checkDatabaseHealth(timeoutMs = 3000): Promise<boolean> {
 
   try {
     const supabase = getServiceClient();
-    // Query the app_meta table initialized in Phase 0
     const queryPromise = supabase
       .from("app_meta")
       .select("key")
@@ -39,15 +38,33 @@ export async function checkDatabaseHealth(timeoutMs = 3000): Promise<boolean> {
   }
 }
 
+export async function getLastSyncTime(): Promise<string | null> {
+  try {
+    const supabase = getServiceClient();
+    const { data } = await supabase
+      .from("sync_runs")
+      .select("finished_at")
+      .eq("status", "success")
+      .order("finished_at", { ascending: false })
+      .limit(1)
+      .maybeSingle();
+
+    return data?.finished_at || null;
+  } catch {
+    return null;
+  }
+}
+
 export async function GET() {
   const isDbHealthy = await checkDatabaseHealth();
+  const lastSync = isDbHealthy ? await getLastSyncTime() : null;
   const time = new Date().toISOString();
 
   const responseBody: HealthResponse = {
     status: isDbHealthy ? "ok" : "error",
     time,
     db: isDbHealthy ? "ok" : "error",
-    lastSync: null,
+    lastSync,
   };
 
   const status = isDbHealthy ? 200 : 503;

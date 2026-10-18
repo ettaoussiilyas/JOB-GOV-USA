@@ -4,6 +4,17 @@ const serverEnvSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
   SUPABASE_SERVICE_ROLE_KEY: z.string().min(1, "SUPABASE_SERVICE_ROLE_KEY is required"),
   CRON_SECRET: z.string().min(16, "CRON_SECRET must be at least 16 characters"),
+  // Email Provider Configuration (Brevo SMTP, Resend, Mock)
+  EMAIL_PROVIDER: z.enum(["brevo", "resend", "mock"]).default("brevo"),
+  EMAIL_FROM: z.string().default("FedJobs Radar <notifications@fedjobsradar.com>"),
+  BREVO_SMTP_HOST: z.string().default("smtp-relay.brevo.com"),
+  BREVO_SMTP_PORT: z.coerce.number().default(587),
+  BREVO_SMTP_USER: z.string().optional(),
+  BREVO_SMTP_KEY: z.string().optional(),
+  // USAJOBS API Configuration
+  USAJOBS_API_KEY: z.string().optional(),
+  USAJOBS_USER_AGENT_EMAIL: z.string().optional(),
+  USAJOBS_BASE_URL: z.string().url().default("https://data.usajobs.gov"),
 });
 
 const publicEnvSchema = z.object({
@@ -50,6 +61,16 @@ export function validateEnv(runtimeEnv: Record<string, unknown> = process.env): 
     SUPABASE_SERVICE_ROLE_KEY:
       (runtimeEnv.SUPABASE_SERVICE_ROLE_KEY as string) || "mock-service-role-key",
     CRON_SECRET: (runtimeEnv.CRON_SECRET as string) || "mock-cron-secret-32-chars-long",
+    EMAIL_PROVIDER: (runtimeEnv.EMAIL_PROVIDER as "brevo" | "resend" | "mock") || "mock",
+    EMAIL_FROM:
+      (runtimeEnv.EMAIL_FROM as string) || "FedJobs Radar <notifications@fedjobsradar.com>",
+    BREVO_SMTP_HOST: (runtimeEnv.BREVO_SMTP_HOST as string) || "smtp-relay.brevo.com",
+    BREVO_SMTP_PORT: Number(runtimeEnv.BREVO_SMTP_PORT || 587),
+    BREVO_SMTP_USER: (runtimeEnv.BREVO_SMTP_USER as string) || "mock-smtp-user",
+    BREVO_SMTP_KEY: (runtimeEnv.BREVO_SMTP_KEY as string) || "mock-smtp-key",
+    USAJOBS_API_KEY: (runtimeEnv.USAJOBS_API_KEY as string) || "mock-api-key",
+    USAJOBS_USER_AGENT_EMAIL: (runtimeEnv.USAJOBS_USER_AGENT_EMAIL as string) || "test@example.com",
+    USAJOBS_BASE_URL: (runtimeEnv.USAJOBS_BASE_URL as string) || "https://data.usajobs.gov",
     ...publicResult.data,
   };
 }

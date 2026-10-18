@@ -3,6 +3,7 @@ import { Container } from "@/components/Container";
 import { Card } from "@/components/Card";
 import Link from "next/link";
 import { siteConfig } from "@/config/site";
+import { t } from "@/lib/i18n";
 
 export const metadata: Metadata = {
   title: "About Our Project",
@@ -16,74 +17,56 @@ export default function AboutPage() {
       <Container>
         <div className="max-w-3xl">
           <p className="text-sm font-semibold tracking-wide text-teal-800 uppercase">
-            About FedJobs Radar
+            {t("about.category")}
           </p>
           <h1 className="mt-2 text-3xl font-extrabold tracking-tight text-neutral-900 sm:text-4xl">
-            Demystifying US federal employment.
+            {t("about.title")}
           </h1>
 
           <div className="mt-8 space-y-6 text-base leading-relaxed text-neutral-600">
-            <p>
-              The United States federal government is one of the largest and most stable employers
-              in the world, offering thousands of career opportunities across hundreds of agencies.
-              However, for college students, recent graduates, and first-time applicants, the
-              official hiring process can feel overwhelming.
-            </p>
-
-            <p>
-              Navigating General Schedule (GS) grades, occupational series codes, specialized
-              experience criteria, and restrictive hiring paths often discourages talented
-              candidates from applying.
-            </p>
+            <p>{t("about.intro1")}</p>
+            <p>{t("about.intro2")}</p>
 
             <h2 className="pt-4 text-2xl font-bold tracking-tight text-neutral-900">
-              Our Core Mission
+              {t("about.missionHeading")}
             </h2>
-            <p>
-              {siteConfig.name} was created to bridge this information gap. Our goal is not to
-              replace USAJOBS, but to act as a clear, high-speed radar that translates complex
-              government announcements into plain English before you apply.
-            </p>
+            <p>{t("about.missionBody", { siteName: siteConfig.name })}</p>
 
             <div className="my-8">
               <Card>
-                <h3 className="font-semibold text-neutral-900">Our Commitments to Job Seekers</h3>
+                <h3 className="font-semibold text-neutral-900">{t("about.commitmentsHeading")}</h3>
                 <ul className="mt-3 space-y-2.5 text-sm text-neutral-600 list-disc list-inside">
                   <li>
-                    <strong className="text-neutral-800">100% Free Access:</strong> We never charge
-                    job seekers for access to public government listings.
+                    <strong className="text-neutral-800">{t("about.commitment1Title")}:</strong>{" "}
+                    {t("about.commitment1Desc")}
                   </li>
                   <li>
-                    <strong className="text-neutral-800">Deterministic Clarity:</strong> Eligibility
-                    and pay information are derived strictly from official structured data fields.
+                    <strong className="text-neutral-800">{t("about.commitment2Title")}:</strong>{" "}
+                    {t("about.commitment2Desc")}
                   </li>
                   <li>
-                    <strong className="text-neutral-800">Privacy-First Alerts:</strong> No accounts
-                    or passwords required. Double opt-in email digests with one-click unsubscribe
-                    links.
+                    <strong className="text-neutral-800">{t("about.commitment3Title")}:</strong>{" "}
+                    {t("about.commitment3Desc")}
                   </li>
                   <li>
-                    <strong className="text-neutral-800">Official Attribution:</strong> Every job
-                    listing links directly to USAJOBS.gov for official applications.
+                    <strong className="text-neutral-800">{t("about.commitment4Title")}:</strong>{" "}
+                    {t("about.commitment4Desc")}
                   </li>
                 </ul>
               </Card>
             </div>
 
             <h2 className="pt-2 text-2xl font-bold tracking-tight text-neutral-900">
-              Independent Platform
+              {t("about.independentHeading")}
             </h2>
-            <p>
-              We are an independent technology project. We do not represent, partner with, or
-              receive funding from the United States government or any federal agency.
-            </p>
+            <p>{t("about.independentBody")}</p>
 
             <div className="pt-6">
               <Link
                 href="/disclaimer"
                 className="text-sm font-semibold text-teal-800 hover:text-teal-700 underline"
               >
-                Read our full legal disclaimer and data source notices →
+                {t("about.disclaimerLink")}
               </Link>
             </div>
           </div>

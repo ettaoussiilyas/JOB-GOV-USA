@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { t } from "@/lib/i18n";
 
 export default function GlobalError({
   error,
@@ -11,7 +12,6 @@ export default function GlobalError({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Client-side logging without leaking stack traces to the UI
     console.error("Application error boundary triggered:", error.message);
   }, [error]);
 
@@ -35,24 +35,21 @@ export default function GlobalError({
           </svg>
         </div>
         <h1 className="text-2xl font-bold tracking-tight text-neutral-900 sm:text-3xl">
-          Something went wrong
+          {t("errors.genericTitle")}
         </h1>
-        <p className="mt-3 text-neutral-600">
-          We encountered an unexpected issue while loading this page. Please try again or return to
-          the homepage.
-        </p>
+        <p className="mt-3 text-neutral-600">{t("errors.genericBody")}</p>
         <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
           <button
             onClick={() => reset()}
             className="inline-flex items-center justify-center rounded-md bg-teal-800 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-teal-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal-800"
           >
-            Try again
+            {t("errors.tryAgain")}
           </button>
           <Link
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-neutral-300 bg-white px-4 py-2 text-sm font-semibold text-neutral-700 shadow-sm hover:bg-neutral-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-500"
           >
-            Back to homepage
+            {t("errors.backHome")}
           </Link>
         </div>
       </div>

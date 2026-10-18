@@ -1,20 +1,22 @@
+import { getDictionary } from "@/lib/i18n";
+
+const dict = getDictionary();
+
 export const siteConfig = {
-  name: "FedJobs Radar",
-  shortName: "FedJobs",
-  description:
-    "A clean, fast radar of US federal jobs for newcomers and students, with plain-English eligibility explanations and daily alerts.",
+  name: process.env.NEXT_PUBLIC_SITE_NAME || dict.site.name,
+  shortName: dict.site.shortName,
+  description: dict.site.description,
   url: process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000",
-  disclaimer:
-    "Not affiliated with or endorsed by USAJOBS or any US government agency. Information may be incomplete or outdated. Always verify details and apply on the official USAJOBS posting.",
-  attribution: "Data from official USAJOBS API.",
+  disclaimer: dict.site.disclaimer,
+  attribution: dict.site.attribution,
   nav: [
-    { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
-    { title: "Disclaimer", href: "/disclaimer" },
+    { title: dict.nav.home, href: "/" },
+    { title: dict.nav.about, href: "/about" },
+    { title: dict.nav.disclaimer, href: "/disclaimer" },
   ],
   footerLinks: [
-    { title: "Home", href: "/" },
-    { title: "About", href: "/about" },
-    { title: "Disclaimer", href: "/disclaimer" },
+    { title: dict.nav.home, href: "/" },
+    { title: dict.nav.about, href: "/about" },
+    { title: dict.nav.disclaimer, href: "/disclaimer" },
   ],
 };

@@ -1,0 +1,92 @@
+{
+  "site": {
+    "name": "FedJobs Radar",
+    "shortName": "FedJobs",
+    "description": "A clean, fast radar of US federal jobs for newcomers and students, with plain-English eligibility explanations and daily alerts.",
+    "disclaimer": "Not affiliated with or endorsed by USAJOBS or any US government agency. Information may be incomplete or outdated. Always verify details and apply on the official USAJOBS posting.",
+    "attribution": "Data from official USAJOBS API.",
+    "copyright": "All rights reserved."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "disclaimer": "Disclaimer",
+    "skipToContent": "Skip to main content"
+  },
+  "home": {
+    "hero": {
+      "phaseBadge": "Phase 0 — Platform Foundation",
+      "title": "Federal jobs, explained in plain English.",
+      "subtitle": "A clean, fast radar designed for students and newcomers navigating US federal hiring. We cut through government acronyms to show who is eligible, what the job pays, and how to apply.",
+      "statusTitle": "Under Construction",
+      "statusBody": "The platform core and staging database are currently active. Live job listings, ingestion from the official USAJOBS API, and email digest alerts will launch in upcoming phases.",
+      "ctaAbout": "Learn About Our Mission",
+      "ctaDisclaimer": "Read Official Disclaimer"
+    },
+    "howItWorks": {
+      "heading": "How It Will Work",
+      "subtitle": "Federal hiring does not have to be intimidating. Here is how our radar will simplify your search.",
+      "step1Title": "1. Spot New Postings Fast",
+      "step1Desc": "Daily synchronized radar tracking newly published positions across all federal agencies, highlighting early deadlines before postings close.",
+      "step2Title": "2. Understand Eligibility",
+      "step2Desc": "Deterministic plain-English explanations of hiring paths (Students, Recent Grads, Public) paired with transparent pay scale ranges and locality factors.",
+      "step3Title": "3. Get Targeted Alerts",
+      "step3Desc": "Set up saved searches tailored to your grade level, series code, and location. Receive clean email digests without spam or passwords."
+    },
+    "features": {
+      "heading": "What You Will Get",
+      "subtitle": "Built on official public data from USAJOBS, enhanced with original context and guidance.",
+      "freshJobsTitle": "Fresh Jobs & Alerts",
+      "freshJobsDesc": "Synchronized every day via official APIs with clear countdowns for closing deadlines.",
+      "eligibilityTitle": "Plain-English Eligibility",
+      "eligibilityDesc": "Instant answers to \"Can I apply?\" derived from structured data and official criteria.",
+      "guidesTitle": "Step-by-Step Guides",
+      "guidesDesc": "Sourced guides on building federal resumes, understanding GS pay, and Pathways programs.",
+      "salaryTitle": "Transparent Salary Context",
+      "salaryDesc": "Clear pay scales, grade bands, and locality adjustments without guesswork."
+    }
+  },
+  "about": {
+    "category": "About FedJobs Radar",
+    "title": "Demystifying US federal employment.",
+    "intro1": "The United States federal government is one of the largest and most stable employers in the world, offering thousands of career opportunities across hundreds of agencies. However, for college students, recent graduates, and first-time applicants, the official hiring process can feel overwhelming.",
+    "intro2": "Navigating General Schedule (GS) grades, occupational series codes, specialized experience criteria, and restrictive hiring paths often discourages talented candidates from applying.",
+    "missionHeading": "Our Core Mission",
+    "missionBody": "{siteName} was created to bridge this information gap. Our goal is not to replace USAJOBS, but to act as a clear, high-speed radar that translates complex government announcements into plain English before you apply.",
+    "commitmentsHeading": "Our Commitments to Job Seekers",
+    "commitment1Title": "100% Free Access",
+    "commitment1Desc": "We never charge job seekers for access to public government listings.",
+    "commitment2Title": "Deterministic Clarity",
+    "commitment2Desc": "Eligibility and pay information are derived strictly from official structured data fields.",
+    "commitment3Title": "Privacy-First Alerts",
+    "commitment3Desc": "No accounts or passwords required. Double opt-in email digests with one-click unsubscribe links.",
+    "commitment4Title": "Official Attribution",
+    "commitment4Desc": "Every job listing links directly to USAJOBS.gov for official applications.",
+    "independentHeading": "Independent Platform",
+    "independentBody": "We are an independent technology project. We do not represent, partner with, or receive funding from the United States government or any federal agency.",
+    "disclaimerLink": "Read our full legal disclaimer and data source notices →"
+  },
+  "disclaimer": {
+    "category": "Legal & Compliance",
+    "title": "Disclaimer & Terms Notice",
+    "affiliationHeading": "Non-Affiliation Notice",
+    "dataSourceHeading": "Data Source & Ingestion",
+    "dataSourceBody": "Information displayed on this website is obtained through the official, public USAJOBS Search API provided by the United States Office of Personnel Management (OPM). While we endeavor to keep all postings synchronized and accurate, job announcements, qualification criteria, closing dates, and vacancies are subject to change by hiring agencies at any moment without prior notice.",
+    "applicationsHeading": "Application Submission",
+    "applicationsBody": "{siteName} does not accept, process, or forward job applications. All job applications must be submitted directly through USAJOBS.gov or the official designated hiring portal of the respective agency.",
+    "guaranteesHeading": "No Guarantees or Endorsements",
+    "guaranteesBody": "We do not guarantee employment, interview selection, or eligibility determination. Any plain-English summaries, salary estimates, or eligibility guidelines provided on this site are for informational and educational purposes only. Candidates are solely responsible for reviewing the official vacancy announcement before submitting an application.",
+    "brandingHeading": "No Government Branding",
+    "brandingBody": "This website does not display the Great Seal of the United States, official agency crests, or governmental insignia. Any mention of government departments, agencies, or pay scales is purely for identification and descriptive purposes."
+  },
+  "errors": {
+    "genericTitle": "Something went wrong",
+    "genericBody": "We encountered an unexpected issue while loading this page. Please try again or return to the homepage.",
+    "tryAgain": "Try again",
+    "backHome": "Back to homepage",
+    "notFoundCategory": "404 Error",
+    "notFoundTitle": "Page not found",
+    "notFoundBody": "The page you are looking for does not exist, has been removed, or is temporarily unavailable.",
+    "returnHome": "Return to homepage"
+  }
+}
