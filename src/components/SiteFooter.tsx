@@ -12,8 +12,7 @@ export function SiteFooter() {
           <div>
             <p className="font-bold text-neutral-900">{siteConfig.name}</p>
             <p className="mt-2 text-xs leading-relaxed text-neutral-500">
-              A clean radar of US federal employment opportunities, built to clarify federal hiring,
-              salary scales, and eligibility requirements in plain English.
+              {siteConfig.description}
             </p>
             <p className="mt-4 text-xs font-semibold text-neutral-700">{siteConfig.attribution}</p>
           </div>

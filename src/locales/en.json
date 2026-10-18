@@ -10,6 +10,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
+    "contact": "Contact",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
     "disclaimer": "Disclaimer",
     "skipToContent": "Skip to main content"
   },
@@ -78,6 +81,51 @@
     "guaranteesBody": "We do not guarantee employment, interview selection, or eligibility determination. Any plain-English summaries, salary estimates, or eligibility guidelines provided on this site are for informational and educational purposes only. Candidates are solely responsible for reviewing the official vacancy announcement before submitting an application.",
     "brandingHeading": "No Government Branding",
     "brandingBody": "This website does not display the Great Seal of the United States, official agency crests, or governmental insignia. Any mention of government departments, agencies, or pay scales is purely for identification and descriptive purposes."
+  },
+  "privacy": {
+    "category": "Privacy & Data Protection",
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: October 2026",
+    "intro": "At {siteName}, accessible from {siteUrl}, your privacy is one of our top priorities. This Privacy Policy document outlines the types of information that is collected and recorded by our platform and how we use it.",
+    "section1Title": "1. No Accounts & Minimal Data Collection",
+    "section1Body": "{siteName} does not require registration, passwords, or personal accounts to search or view job postings. Visitors can browse all publicly available job data freely and anonymously.",
+    "section2Title": "2. Email Subscriptions & Alerts",
+    "section2Body": "If you choose to subscribe to custom job alert digests, we collect only your email address and saved search criteria. We implement a strict double opt-in verification process. Every email notification contains an instant one-click unsubscribe link, and you can permanently delete your alert profile at any time.",
+    "section3Title": "3. Cookies and Advertising Partners (Google AdSense)",
+    "section3Body": "Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Google's use of advertising cookies enables it and its partners to serve ads to users based on their visit to our sites and/or other sites on the Internet. You may opt out of personalized advertising by visiting Google Ads Settings (https://www.google.com/settings/ads) or through www.aboutads.info.",
+    "section4Title": "4. Log Files & Analytics",
+    "section4Body": "{siteName} follows standard procedures for utilizing log files. These files log visitors when they visit websites. The information collected by log files includes internet protocol (IP) addresses, browser type, Internet Service Provider (ISP), date and time stamp, and referring/exit pages. These are not linked to any information that is personally identifiable and are used solely for analyzing trends and system maintenance.",
+    "section5Title": "5. Children's Information (COPPA)",
+    "section5Body": "We believe it is important to provide added protection for children online. We encourage parents and guardians to observe, participate in, and/or monitor and guide their online activity. {siteName} does not knowingly collect any Personal Identifiable Information from children under the age of 13.",
+    "section6Title": "6. Your Privacy Rights & Contact",
+    "section6Body": "You have the right to request access to the data we hold about you or request its immediate deletion. For any questions or data requests, please contact us at {contactEmail}."
+  },
+  "terms": {
+    "category": "Legal Terms",
+    "title": "Terms of Service",
+    "lastUpdated": "Last updated: October 2026",
+    "intro": "By accessing or using {siteName}, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you disagree with any part of these terms, you may not use our services.",
+    "section1Title": "1. Nature of the Platform",
+    "section1Body": "{siteName} is an independent informational directory and search tool that aggregates public federal job listings. We are not an employer, employment agency, recruiter, or official representative of the United States government or any federal agency.",
+    "section2Title": "2. No Guarantee of Employment",
+    "section2Body": "We do not guarantee that any job vacancy listed on our platform is currently available, that application deadlines have not changed, or that applicants will receive interviews or job offers. All applications must be submitted directly through official agency portals or USAJOBS.gov.",
+    "section3Title": "3. Acceptable Use",
+    "section3Body": "Users agree not to scrape, systematically harvest, or automate queries against {siteName} in a manner that degrades service performance for others. Any attempt to compromise security, forge headers, or bypass bot detection mechanisms is strictly prohibited.",
+    "section4Title": "4. Intellectual Property & Trademarks",
+    "section4Body": "The design, layout, code, and original explanatory text of {siteName} are protected by copyright. Government job announcements and public agency names are the property of their respective entities and are referenced strictly under nominative fair use.",
+    "section5Title": "5. Limitation of Liability",
+    "section5Body": "In no event shall {siteName} or its operators be liable for any damages arising out of the use or inability to use the materials on this website, including reliance on salary estimates or eligibility guidelines."
+  },
+  "contact": {
+    "category": "Get In Touch",
+    "title": "Contact Us",
+    "subtitle": "Have a question, feedback, data correction request, or partnership inquiry? We are here to help.",
+    "directEmailTitle": "Email Support & Inquiries",
+    "directEmailBody": "For general support, feedback, or data privacy requests, email us directly at:",
+    "correctionsTitle": "Reporting Inaccurate Postings",
+    "correctionsBody": "If you notice an error in a job posting summary or expired announcement still marked active, please share the job title and URL so our radar engine can review it promptly.",
+    "responseTimeline": "We typically review and respond to inquiries within 1–2 business days.",
+    "affiliationReminder": "Please note: We cannot answer questions regarding individual job application statuses or federal hiring decisions. Please contact the hiring agency listed on the official USAJOBS posting directly."
   },
   "errors": {
     "genericTitle": "Something went wrong",

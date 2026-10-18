@@ -57,5 +57,8 @@
     "*.{json,md,css}": [
       "prettier --write"
     ]
+  },
+  "overrides": {
+    "@eslint/plugin-kit": ">=0.3.4"
   }
 }

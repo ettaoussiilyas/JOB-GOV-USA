@@ -21,8 +21,7 @@ export class BrevoEmailSender implements EmailSender {
       port: Number(config?.port || process.env.BREVO_SMTP_PORT || 587),
       user: config?.user || process.env.BREVO_SMTP_USER || "",
       key: config?.key || process.env.BREVO_SMTP_KEY || "",
-      from:
-        config?.from || process.env.EMAIL_FROM || "FedJobs Radar <notifications@fedjobsradar.com>",
+      from: config?.from || process.env.EMAIL_FROM || "",
     };
   }
 
@@ -54,8 +53,15 @@ export class BrevoEmailSender implements EmailSender {
   async send(options: SendEmailOptions): Promise<SendEmailResult> {
     try {
       const transporter = this.getTransporter();
+      const fromAddress = options.from || this.config.from;
+      if (!fromAddress) {
+        throw new Error(
+          "[BrevoEmailSender] Sender address must be configured via EMAIL_FROM or options.from",
+        );
+      }
+
       const mailOptions = {
-        from: options.from || this.config.from,
+        from: fromAddress,
         to: options.to,
         subject: options.subject,
         html: options.html,

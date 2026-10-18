@@ -6,7 +6,7 @@ const serverEnvSchema = z.object({
   CRON_SECRET: z.string().min(16, "CRON_SECRET must be at least 16 characters"),
   // Email Provider Configuration (Brevo SMTP, Resend, Mock)
   EMAIL_PROVIDER: z.enum(["brevo", "resend", "mock"]).default("brevo"),
-  EMAIL_FROM: z.string().default("FedJobs Radar <notifications@fedjobsradar.com>"),
+  EMAIL_FROM: z.string().min(1, "EMAIL_FROM is required").optional(),
   BREVO_SMTP_HOST: z.string().default("smtp-relay.brevo.com"),
   BREVO_SMTP_PORT: z.coerce.number().default(587),
   BREVO_SMTP_USER: z.string().optional(),
@@ -19,6 +19,8 @@ const serverEnvSchema = z.object({
 
 const publicEnvSchema = z.object({
   NEXT_PUBLIC_SITE_URL: z.string().url("NEXT_PUBLIC_SITE_URL must be a valid URL"),
+  NEXT_PUBLIC_SITE_NAME: z.string().optional(),
+  NEXT_PUBLIC_CONTACT_EMAIL: z.string().email().optional(),
   NEXT_PUBLIC_SUPABASE_URL: z.string().url("NEXT_PUBLIC_SUPABASE_URL must be a valid URL"),
   NEXT_PUBLIC_SUPABASE_ANON_KEY: z.string().min(1, "NEXT_PUBLIC_SUPABASE_ANON_KEY is required"),
 });
@@ -62,8 +64,7 @@ export function validateEnv(runtimeEnv: Record<string, unknown> = process.env): 
       (runtimeEnv.SUPABASE_SERVICE_ROLE_KEY as string) || "mock-service-role-key",
     CRON_SECRET: (runtimeEnv.CRON_SECRET as string) || "mock-cron-secret-32-chars-long",
     EMAIL_PROVIDER: (runtimeEnv.EMAIL_PROVIDER as "brevo" | "resend" | "mock") || "mock",
-    EMAIL_FROM:
-      (runtimeEnv.EMAIL_FROM as string) || "FedJobs Radar <notifications@fedjobsradar.com>",
+    EMAIL_FROM: (runtimeEnv.EMAIL_FROM as string) || "System Alerts <alerts@example.com>",
     BREVO_SMTP_HOST: (runtimeEnv.BREVO_SMTP_HOST as string) || "smtp-relay.brevo.com",
     BREVO_SMTP_PORT: Number(runtimeEnv.BREVO_SMTP_PORT || 587),
     BREVO_SMTP_USER: (runtimeEnv.BREVO_SMTP_USER as string) || "mock-smtp-user",
