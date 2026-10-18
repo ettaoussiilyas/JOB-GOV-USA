@@ -1,0 +1,50 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+
+# Testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# Next.js build output
+/.next/
+/out/
+/build
+/dist
+*.tsbuildinfo
+package-lock.json
+
+# Supabase
+.branches/
+.temp/
+
+# Environment files - NEVER commit secrets
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Operating System Files
+.DS_Store
+*.pem
+Thumbs.db
+
+# IDE and Editor
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Antigravity & AI scratch
+.agents/
+scratch/

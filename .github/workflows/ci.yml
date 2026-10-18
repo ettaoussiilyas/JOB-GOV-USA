@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality-gates:
+    name: Lint, Typecheck, Unit Tests & Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 12.14.0
+
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: ESLint check
+        run: pnpm lint
+
+      - name: TypeScript typecheck
+        run: pnpm typecheck
+
+      - name: Unit & Integration tests (Vitest)
+        run: pnpm test
+
+      - name: Next.js production build
+        run: pnpm build
+        env:
+          NEXT_PUBLIC_SITE_URL: "https://fedjobsradar.com"
+          NEXT_PUBLIC_SUPABASE_URL: "https://xyz.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-anon-key-ci"
+          SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key-ci"
+          CRON_SECRET: "mock-cron-secret-32-chars-long-ci-run"
+
+      - name: Install Playwright browsers
+        run: pnpm exec playwright install --with-deps chromium
+
+      - name: Playwright E2E & Accessibility Tests (axe-core)
+        run: pnpm test:e2e
+        env:
+          NEXT_PUBLIC_SITE_URL: "http://127.0.0.1:3000"
+          NEXT_PUBLIC_SUPABASE_URL: "https://xyz.supabase.co"
+          NEXT_PUBLIC_SUPABASE_ANON_KEY: "mock-anon-key-ci"
+          SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key-ci"
+          CRON_SECRET: "mock-cron-secret-32-chars-long-ci-run"
+
+      - name: Secret Scan (Gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: false
+
+      - name: Dependency Vulnerability Audit (Report-only)
+        run: pnpm audit --audit-level=high || true
